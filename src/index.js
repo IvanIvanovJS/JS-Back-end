@@ -1,5 +1,7 @@
 import express from "express";
 import handlebars from "express-handlebars";
+import routes from "./routes.js";
+
 
 const app = express();
 
@@ -13,14 +15,8 @@ app.set('view engine', 'hbs');
 app.set('views', 'src/views')
 
 app.use(express.static('src/public'))
-
-app.get('/', (req, res) => {
-    res.render('home')
-});
-
-app.get('/about', (req, res) => {
-    res.render('about')
-})
+app.use(express.urlencoded())
+app.use(routes)
 
 app.listen(5000, () => {
     console.log('Server is listening on port http://localhost:5000...')
