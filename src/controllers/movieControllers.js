@@ -4,20 +4,21 @@ import movieServices from "../services/movieServices.js";
 const movieController = Router();
 
 movieController.get('/create', (req, res) => {
-    res.render('create')
+    const pageTitle = 'Create Movie'
+    res.render('create', { pageTitle })
 })
 
-movieController.post('/create', (req, res) => {
+movieController.post('/create', async (req, res) => {
     const moviveData = req.body;
-    const movie = movieServices.create(moviveData)
+    await movieServices.create(moviveData)
 
     res.redirect('/')
 
 })
 
-movieController.get('/:movieId/details', (req, res) => {
+movieController.get('/:movieId/details', async (req, res) => {
     const movieId = req.params.movieId;
-    const movie = movieServices.getOne(movieId)
+    const movie = await movieServices.getOne(movieId)
     movie.rating = '&#x2605;'.repeat(Math.trunc(movie.rating))
     console.log(movie.rating);
 
