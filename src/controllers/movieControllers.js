@@ -9,8 +9,19 @@ movieController.get('/create', (req, res) => {
 
 movieController.post('/create', (req, res) => {
     const moviveData = req.body;
-    movieServices.create(moviveData)
+    const movie = movieServices.create(moviveData)
+
     res.redirect('/')
+
+})
+
+movieController.get('/:movieId/details', (req, res) => {
+    const movieId = req.params.movieId;
+    const movie = movieServices.getOne(movieId)
+    movie.rating = '&#x2605;'.repeat(Math.trunc(movie.rating))
+    console.log(movie.rating);
+
+    res.render('details', { movie })
 
 })
 
