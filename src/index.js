@@ -1,13 +1,31 @@
 import express from "express";
 import handlebars from "express-handlebars";
+import mongoose from 'mongoose'
+import 'dotenv/config'
+
 import routes from "./routes.js";
 
+const url = process.env.PUBLIC_URL
+
+
+try {
+    await mongoose.connect(url, { dbName: 'magic-movie-2025' })
+    console.log('Succesfully connected to DB!');
+
+} catch (error) {
+    console.error('Cannot connect to DB, ', error.message);
+
+}
 
 const app = express();
 
 app.engine("hbs", handlebars.engine(
     {
-        extname: "hbs"
+        extname: "hbs",
+        runtimeOptions: {
+            allowProtoMethodsByDefault: true,
+            allowProtoPropertiesByDefault: true
+        }
     }
 ));
 

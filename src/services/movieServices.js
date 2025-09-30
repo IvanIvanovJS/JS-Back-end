@@ -4,10 +4,10 @@ export default {
     getAll(filter) {
         return Movie.find(filter)
     },
-    create(movieData) {
+    async create(movieData) {
         const movie = new Movie(movieData);
 
-        return movie.save()
+        return await movie.save()
 
     },
 

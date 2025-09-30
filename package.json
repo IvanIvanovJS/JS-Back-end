@@ -12,8 +12,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "express-handlebars": "^8.0.1",
+    "mongoose": "^8.18.3",
     "uuid": "^13.0.0"
   }
 }
