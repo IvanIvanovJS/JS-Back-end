@@ -19,10 +19,11 @@ movieController.post('/create', async (req, res) => {
 movieController.get('/:movieId/details', async (req, res) => {
     const movieId = req.params.movieId;
     const movie = await movieServices.getOne(movieId)
-    movie.rating = '&#x2605;'.repeat(Math.trunc(movie.rating))
-    console.log(movie.rating);
+    const starRating = '★'.repeat(Math.trunc(movie.rating))
 
-    res.render('details', { movie })
+
+
+    res.render('details', { movie, starRating })
 
 })
 

@@ -1,8 +1,23 @@
 import Movie from '../Models/Movie.js';
 
 export default {
-    getAll(filter) {
-        return Movie.find(filter)
+    getAll(filter = {}) {
+        let query = Movie.find();
+
+        if (filter.title) {
+            query = query.find({ title: { $regex: filter.title, $options: 'i' } });
+        }
+
+
+        if (filter.genre) {
+            query = query.find({ genre: { $regex: new RegExp(`^${filter.genre}$`, 'i') } })
+        }
+
+
+        if (filter.year) {
+            query = query.find({ year: filter.year })
+        }
+        return query
     },
     async create(movieData) {
         const movie = new Movie(movieData);

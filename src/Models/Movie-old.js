@@ -12,17 +12,7 @@ class Movie {
     }
 
     static find(filter = {}) {
-        let result = movies.slice();
-        if (filter.title) {
-            result = result.filter(movie => movie.title.toLocaleLowerCase().includes(filter.title.toLocaleLowerCase()))
-        }
-        if (filter.genre) {
-            result = result.filter(movie => movie.genre.toLocaleLowerCase() === filter.genre.toLocaleLowerCase())
-        }
-        if (filter.year) {
-            result = result.filter(movie => movie.year === filter.year)
-        }
-        return result
+
     }
 
     static findOne(filter) {
