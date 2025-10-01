@@ -27,6 +27,10 @@ export default {
     },
 
     getOne(movieId) {
-        return Movie.findOne({ _id: movieId })
+        return Movie.findById(movieId).populate('casts');
+    },
+
+    attach(movieId, castId) {
+        return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } })
     }
 }
