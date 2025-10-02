@@ -12,7 +12,8 @@ movieController.get('/create', isAuth, (req, res) => {
 
 movieController.post('/create', isAuth, async (req, res) => {
     const moviveData = req.body;
-    await movieServices.create(moviveData)
+    const ownerId = req.user.id
+    await movieServices.create(moviveData, ownerId)
 
     res.redirect('/')
 
@@ -22,10 +23,10 @@ movieController.get('/:movieId/details', async (req, res) => {
     const movieId = req.params.movieId;
     const movie = await movieServices.getOne(movieId).populate('casts')
     const starRating = '★'.repeat(Math.trunc(movie.rating))
+    const isOwner = req.user?.id && movie.owner == req.user.id
 
 
-
-    res.render('details', { movie, starRating })
+    res.render('details', { movie, starRating, isOwner })
 
 })
 

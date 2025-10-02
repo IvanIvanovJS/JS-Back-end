@@ -19,8 +19,8 @@ export default {
         }
         return query
     },
-    async create(movieData) {
-        const movie = new Movie(movieData);
+    async create(movieData, ownerId) {
+        const movie = new Movie({ ...movieData, owner: ownerId });
 
         return await movie.save()
 
