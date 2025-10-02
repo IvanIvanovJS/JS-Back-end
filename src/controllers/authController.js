@@ -1,5 +1,5 @@
 import { Router } from "express";
-import userSurvice from "../services/userSurvice.js";
+import authSurvice from "../services/authSurvice.js";
 
 const authController = Router();
 
@@ -9,7 +9,7 @@ authController.get('/register', (req, res) => {
 
 authController.post('/register', async (req, res) => {
     const userData = req.body
-    await userSurvice.register(userData)
+    await authSurvice.register(userData)
     res.redirect('/auth/login')
 })
 authController.get('/login', (req, res) => {
@@ -17,7 +17,7 @@ authController.get('/login', (req, res) => {
 })
 authController.post('/login', async (req, res) => {
     const { email, password } = req.body
-    const token = await userSurvice.login(email, password)
+    const token = await authSurvice.login(email, password)
 
     res.cookie('auth', token)
     res.redirect('/')

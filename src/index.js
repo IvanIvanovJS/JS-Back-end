@@ -1,9 +1,11 @@
 import express from "express";
 import handlebars from "express-handlebars";
 import mongoose from 'mongoose'
+import cookieParser from "cookie-parser";
 import 'dotenv/config'
 
 import routes from "./routes.js";
+import authMiddleware from "./middlewares/authMiddleware.js";
 
 const url = process.env.PUBLIC_URL
 
@@ -34,6 +36,8 @@ app.set('views', 'src/views')
 
 app.use(express.static('src/public'))
 app.use(express.urlencoded())
+app.use(cookieParser())
+app.use(authMiddleware)
 app.use(routes)
 
 app.listen(5000, () => {

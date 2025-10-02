@@ -26,7 +26,6 @@ export default {
         }
 
         const token = jwt.sign(payload, process.env.JWT_SECRET, { 'expiresIn': '2h' })
-        console.log(token);
 
         return token
     }
