@@ -11,6 +11,10 @@ export default function authMiddleware(req, res, next) {
         const decodedToken = jwt.verify(token, process.env.JWT_SECRET)
         req.user = decodedToken;
         req.isAuthenticated = true;
+        //Handlebars globals
+        res.locals.user = decodedToken;
+        res.locals.isAuthenticated = true;
+        next()
     } catch (error) {
         res.clearCookie('auth')
 
