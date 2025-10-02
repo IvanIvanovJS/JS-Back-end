@@ -10,8 +10,9 @@ authController.get('/register', isGuest, (req, res) => {
 
 authController.post('/register', isGuest, async (req, res) => {
     const userData = req.body
-    await authSurvice.register(userData)
-    res.redirect('/auth/login')
+    const token = await authSurvice.register(userData)
+    res.cookie('auth', token)
+    res.redirect('/')
 })
 authController.get('/login', isGuest, (req, res) => {
     res.render('auth/login')
