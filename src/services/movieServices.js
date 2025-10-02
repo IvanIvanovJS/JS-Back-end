@@ -32,5 +32,8 @@ export default {
 
     attach(movieId, castId) {
         return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } })
+    },
+    delete(movieId) {
+        return Movie.findByIdAndDelete(movieId)
     }
 }
