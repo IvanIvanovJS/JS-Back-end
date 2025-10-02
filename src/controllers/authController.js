@@ -11,5 +11,8 @@ authController.post('/register', async (req, res) => {
     const userData = req.body
     await userSurice.register(userData)
 })
+authController.get('/login', (req, res) => {
+    res.render('auth/login')
+})
 
 export default authController;
