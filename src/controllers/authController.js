@@ -17,7 +17,15 @@ authController.get('/login', (req, res) => {
 })
 authController.post('/login', async (req, res) => {
     const { email, password } = req.body
-    await userSurvice.login(email, password)
+    const token = await userSurvice.login(email, password)
+
+    res.cookie('auth', token)
+    res.redirect('/')
+})
+
+authController.get('/logout', (req, res) => {
+    res.clearCookie('auth')
+    res.redirect('/auth/login')
 })
 
 export default authController;
