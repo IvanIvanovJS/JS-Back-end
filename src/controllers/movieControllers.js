@@ -1,15 +1,16 @@
 import { Router } from "express";
 import movieServices from "../services/movieServices.js";
 import castSurvices from '../services/castSurvices.js'
+import { isAuth } from "../middlewares/authMiddleware.js";
 
 const movieController = Router();
 
-movieController.get('/create', (req, res) => {
+movieController.get('/create', isAuth, (req, res) => {
     const pageTitle = 'Create Movie'
     res.render('create', { pageTitle })
 })
 
-movieController.post('/create', async (req, res) => {
+movieController.post('/create', isAuth, async (req, res) => {
     const moviveData = req.body;
     await movieServices.create(moviveData)
 

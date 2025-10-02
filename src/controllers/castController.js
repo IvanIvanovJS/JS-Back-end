@@ -1,13 +1,14 @@
 import { Router } from "express";
 import castSurvices from "../services/castSurvices.js";
+import { isAuth } from "../middlewares/authMiddleware.js";
 
 const castController = Router();
 
-castController.get('/create', (req, res) => {
+castController.get('/create', isAuth, (req, res) => {
     res.render('casts/create')
 })
 
-castController.post('/create', async (req, res) => {
+castController.post('/create', isAuth, async (req, res) => {
     const castData = req.body;
 
     await castSurvices.create(castData)
