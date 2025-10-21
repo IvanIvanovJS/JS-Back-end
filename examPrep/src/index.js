@@ -3,6 +3,8 @@ import routes from "./routes.js";
 import handlebars from "express-handlebars"
 import mongoose from "mongoose";
 import 'dotenv/config'
+import cookieParser from "cookie-parser";
+import authMiddleware from "./middlewares/authMiddleware.js";
 
 const app = express();
 try {
@@ -28,7 +30,9 @@ app.set('view engine', 'hbs')
 app.set('views', 'src/views')
 
 app.use(express.static('src/public'))
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
+app.use(authMiddleware)
 app.use(routes)
 
 app.get("/", (req, res) => {
