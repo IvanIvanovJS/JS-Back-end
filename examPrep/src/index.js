@@ -2,6 +2,7 @@ import express from "express";
 import routes from "./routes.js";
 import handlebars from "express-handlebars"
 import mongoose from "mongoose";
+import 'dotenv/config'
 
 const app = express();
 try {

@@ -6,7 +6,7 @@ import userController from "./controllers/userController.js";
 const routes = Router();
 
 routes.use(homeController)
-routes.use(userController)
+routes.use('/users', userController)
 
 routes.use(errorController)
 
