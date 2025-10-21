@@ -2,6 +2,6 @@ import { Router } from "express";
 
 const homeController = Router();
 homeController.get('/', (req, res) => {
-    res.send("Home page")
+    res.render('home')
 })
 export default homeController
