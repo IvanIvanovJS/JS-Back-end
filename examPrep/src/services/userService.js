@@ -2,10 +2,14 @@ import User from "../models/User.js";
 import bcrypt from 'bcrypt'
 import generateJWT from "../utils/jwtTokenGenerator.js";
 
-export async function register(email, password) {
+export async function register(email, password, repeatPassword) {
     const user = await User.findOne({ email })
     if (user) {
         throw new Error('Email already exists!')
+    }
+
+    if (password !== repeatPassword) {
+        throw new Error('Passwords do not match.Please re-enter.')
     }
 
     const createdUser = await User.create({ email, password });
@@ -20,6 +24,7 @@ export async function login(email, password) {
     if (!user) {
         throw new Error('Invalid email or password!')
     }
+
 
     const isValid = await bcrypt.compare(password, user.password)
     if (!isValid) {
