@@ -1,11 +1,12 @@
 import { Router } from "express";
 import errorController from "./controllers/errorController.js";
 import homeController from "./controllers/homeController.js";
+import userController from "./controllers/userController.js";
 
 const routes = Router();
 
 routes.use(homeController)
-
+routes.use(userController)
 
 routes.use(errorController)
 
