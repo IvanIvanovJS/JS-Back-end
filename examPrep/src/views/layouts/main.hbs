@@ -23,11 +23,11 @@
             <ul>
                 <!-- Guest users and Logged users -->
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Blogs</a></li>
+                <li><a href="/catalog">Blogs</a></li>
                 {{#if isAuthenticated}}
                 <!--For guest users-->
                 <li><a href="#">Profile</a></li>
-                <li><a href="/content/create">Create Blog</a></li>
+                <li><a href="/catalog/create">Create Blog</a></li>
                 <li><a href="/users/logout">Logout</a></li>
                 {{else}}
                 <li><a href="/users/login">Login</a></li>

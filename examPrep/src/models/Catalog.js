@@ -1,6 +1,6 @@
 import { Schema, Types, model } from "mongoose";
 
-const contentSchema = new Schema({
+const catalogSchema = new Schema({
     title: {
         type: String,
         required: [true, 'Title is required!']
@@ -9,9 +9,9 @@ const contentSchema = new Schema({
         type: String,
         required: [true, 'ImageUrl is required!']
     },
-    content: {
+    catalog: {
         type: String,
-        required: [true, 'Content is required!']
+        required: [true, 'catalog is required!']
     },
     category: {
         type: String,
@@ -26,6 +26,6 @@ const contentSchema = new Schema({
     }
 })
 
-const Content = model('Content', contentSchema);
+const Catalog = model('Catalog', catalogSchema);
 
-export default Content;
+export default Catalog;
