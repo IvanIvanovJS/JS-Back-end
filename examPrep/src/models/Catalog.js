@@ -17,12 +17,13 @@ const catalogSchema = new Schema({
         type: String,
         required: [true, 'Category is required!']
     },
-    followList: {
-        type: Array,
-    },
+    followList: [{
+        type: Types.ObjectId,
+        ref: 'User'
+    }],
     owner: {
         type: Types.ObjectId,
-        ref: 'user'
+        ref: 'User'
     }
 })
 

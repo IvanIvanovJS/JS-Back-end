@@ -9,7 +9,11 @@
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    position: relative;
+  position: relative;
+}
+
+.details-container>div {
+  margin-bottom: 2rem;
 }
 
 .details-container-image {
@@ -46,8 +50,6 @@
 .details-container-content p {
   width: 70%;
   text-align: center;
-  padding-top: 2%;
-  padding-bottom: 2%;
 }
 
 .btn-container a {
@@ -62,10 +64,11 @@
 }
 
 .btn-container {
-  position: absolute;
-  bottom: 50px;
+  position: relative;
   width: 100%;
   text-align: center;
+  display: inline-block;
+  padding: 2em;
 }
 
 .follow-pub {
