@@ -1,3 +1,2 @@
-import * as userService from './userService.js'
-
-export default userService
+export * as userService from './userService.js'
+export * as contentService from './contentService.js'

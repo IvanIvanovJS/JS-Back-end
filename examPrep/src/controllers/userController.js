@@ -1,5 +1,5 @@
 import { Router } from "express";
-import userService from "../services/index.js";
+import { userService } from "../services/index.js";
 import { isAuth, isGuest } from "../middlewares/authMiddleware.js";
 import { getErrorMeassage } from "../utils/errorHandler.js";
 

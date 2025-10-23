@@ -29,7 +29,7 @@ app.engine('hbs', handlebars.engine({
             this.pageTitle = title;
         },
         getTitle() {
-            return this.pageTitle || 'Friendly World'
+            return this.pageTitle || 'Mind-Blog'
         }
     }
 
