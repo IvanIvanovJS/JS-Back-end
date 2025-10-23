@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import 'dotenv/config'
 import cookieParser from "cookie-parser";
 import authMiddleware from "./middlewares/authMiddleware.js";
+import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 
 const app = express();
 try {
@@ -43,8 +44,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(authMiddleware)
 app.use(routes)
 
-app.get("/", (req, res) => {
-    res.send("It works")
-})
+app.use(errorMiddleware)
 
 app.listen('5000', () => console.log('Server is listening on http://localhost:5000...'))

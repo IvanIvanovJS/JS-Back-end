@@ -28,15 +28,33 @@ export function create(catalogData, userId) {
     return Catalog.create({ ...catalogData, owner: userId })
 }
 
-export function deleteyById(dataId) {
+export async function deleteyById(dataId, userId) {
+    const data = await Catalog.findById(dataId)
+
+
+    if (!data.owner.equals(userId)) {
+
+        throw {
+            statusCode: 401,
+            message: 'Cannot delete data that you are not owner!'
+        }
+    }
+
     return Catalog.findOneAndDelete(dataId)
 }
 
 export function edit(dataId, data) {
+
+
     return Catalog.findByIdAndUpdate(dataId, data, { runValidators: true })
 }
 
+export function getAllByOnwer(ownerId) {
+    return Catalog.find({ owner: ownerId });
+}
 
-
+export function getUserFollowing(userId) {
+    return Catalog.find({ followList: userId })
+}
 
 

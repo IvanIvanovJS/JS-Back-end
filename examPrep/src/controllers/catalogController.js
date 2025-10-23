@@ -54,28 +54,45 @@ catalogController.get('/:dataId/follow', isAuth, async (req, res) => {
 })
 
 catalogController.get('/:dataId/delete', isAuth, async (req, res) => {
-    const dataId = req.params.id;
-    await catalogService.deleteyById(dataId);
+    const dataId = req.params.dataId;
+    const userId = req.user.id
+    await catalogService.deleteyById(dataId, userId);
+
     res.redirect('/catalog');
 })
 
 catalogController.get('/:dataId/edit', isAuth, async (req, res) => {
-    res.render('catalog/edit')
+    const dataId = req.params.dataId;
+    const data = await catalogService.getOne(dataId)
+    const userId = req.user.id
+
+    if (!data.owner.equals(userId)) {
+
+        throw {
+            statusCode: 401,
+            message: 'Cannot edit data that you are not owner!'
+        }
+    }
+
+    res.render('catalog/edit', { data })
 })
 
 catalogController.post('/:dataId/edit', isAuth, async (req, res) => {
-    const dataId = req.params.id;
+    const dataId = req.params.dataId;
     const data = req.body;
     const userId = req.user.id
 
     try {
-        await catalogService.edit(dataId, data);
+        await catalogService.edit(dataId, data, userId);
         res.redirect(`/catalog/${dataId}/details`)
     } catch (err) {
-        res.status(400).render('404')
+        res.status(400).render('catalog/edit', {
+            data,
+            error: getErrorMeassage(err)
+        }
+        )
     }
 
-    res.redirect('/catalog');
 })
 
 
