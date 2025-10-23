@@ -9,7 +9,7 @@ import authMiddleware from "./middlewares/authMiddleware.js";
 const app = express();
 try {
     await mongoose.connect('mongodb://localhost:27017',
-        { dbName: 'friendly-world-2025' }
+        { dbName: 'mind-blog-2025' }
     )
 
     console.log('Successfully connected to DB!');
