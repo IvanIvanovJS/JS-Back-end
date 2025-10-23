@@ -5,86 +5,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./static/styles/styles.css" />
     <title>Details Page</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body>
-    <div id="wrapper">
-        <header>
-            <!-- Navigation -->
-            <nav>
-                <div>
-                    <a href="#">Home</a>
-                    <a href="#">Dashboard</a>
-                    <a href="#">Search</a>
-                </div>
+    <div class="navigation">
+        <nav>
+            <img src="./images/logo.jpg">
+            <ul>
+                <!-- Guest users and Logged users -->
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blogs</a></li>
+                <!--For guest users-->
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Register</a></li>
+                <!--For loggin users-->
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Create Blog</a></li>
+                <li><a href="#">Logout</a></li>
 
-                <!-- Logged-in users -->
-                <div class="user">
-                    <a href="#">Add Animal</a>
-                    <a href="#">Logout</a>
-                </div>
-
-                <!-- Guest users -->
-                <div class="guest">
-                    <a href="#">Login</a>
-                    <a href="#">Register</a>
-                </div>
-            </nav>
-        </header>
-
-        <main class="details">
-            <!-- Details page -->
-            <section id="details">
-                <div id="details-wrapper">
-                    <p id="details-title">Name: Show</p>
-                    <div id="img-wrapper">
-                        <img src="./static/images/animal1.jpg" />
-                    </div>
-                    <div id="info-wrapper">
-                        <table>
-                            <tr>
-                                <td>
-                                    <p>
-                                        Years: <span id="details-years">5</span>
-                                    </p>
-                                </td>
-                                <td>
-                                    <p>Kind: <span id="details-kind">Lion</span></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Need of: <span id="details-need">Medicine</span></p>
-                                </td>
-                                <td>
-                                    <p>Location: <span id="details-location">San Diego Zoo</span></p>
-                                </td>
-                            </tr>
-                        </table>
-                        <p>Description: <span id="details-description">Your donation goes a long way towards our cause.
-                                Every dollar and item donated goes to the care of lions, animals, and caretakers in
-                                urgent need, as well as providing grants to exceptional sanctuaries, and emergency
-                                relief efforts in the US and around the world. Tell us where you'd like your gift to go
-                                and we will customize your introductory packet to your preferences!</span></p>
-                    </div>
-
-                    <!--Edit and Delete are only for creator-->
-                    <div id="action-buttons">
-                        <a href="#" id="edit-btn">Edit</a>
-                        <a href="#" id="delete-btn">Delete</a>
-                        <a href="#" id="donation-btn">Donation</a>
-                        <p id="already-donated">You already donated!</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>@Friendly World</p>
-        </footer>
+            </ul>
+        </nav>
     </div>
+
+    <main>
+        <div class="details-container">
+            <div class="details-container-image">
+                <img src="./images/around-the-world.jpeg">
+            </div>
+            <div class="details-container-info">
+                <h2>Around the Weekend</h2>
+                <h3>Women's Health</h3>
+                    <h3>By: peter@abv.bg</h3>
+                    <!--If there are followers-->
+                    <h4>Follow By: jace.m, sandra.p</h4>
+                    <!--If there are no followers-->
+                    <h4>There are no followers yet!</h4>
+            </div>
+            <div class="details-container-content">
+                <p>Hi friends! How was the weekend? I hope you had an amazing one. This blog post is a way to bring it back old school and share some more real-life adventures. Quite a few of you let me know that you missed the style of blogging from the past (I do, too!) so I'm trying to do it in a way that's low-key and still focused on my experience, instead of the kids' experience if that makes sense? It can be tricky because the kids are obviously a huge part of my life (and by far the most exciting and such an enjoyable part of my life). I'm still trying to navigate blogging in a way that feels authentic to me without overdoing it on kid content, while continuing to create value-driven posts, too.</p>
+            </div>
+            <div class="btn-container">
+                <!-- Only for registered user and creator of the blog post-->
+                <a href="#">Edit</a>
+                <a href="#">Delete</a>
+                <!-- logged in user who has not yet followed the blog-->
+                <a href="#">Follow</a>
+                <!-- logged in user who has already followed the blog-->
+                <p class="follow-pub">You already follow this blog!</p>
+                
+            </div>
+        </div>
+    </main>
+
+    <footer>Back-End 2022</footer>
 </body>
 
 </html>
