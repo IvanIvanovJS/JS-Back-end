@@ -14,7 +14,7 @@ catalogController.post('/create', isAuth, async (req, res) => {
     const userId = req.user.id
     try {
         await catalogService.create(catalogData, userId)
-        res.redirect('/')
+        res.redirect('/catalog')
     } catch (err) {
         res.status(400).render('catalog/create', {
             error: getErrorMeassage(err),
@@ -27,7 +27,8 @@ catalogController.post('/create', isAuth, async (req, res) => {
 })
 
 catalogController.get('/', async (req, res) => {
-    res.render('catalog/catalog')
+    const catalogData = await catalogService.getAll();
+    res.render('catalog/catalog', { catalogData })
 })
 
 export default catalogController

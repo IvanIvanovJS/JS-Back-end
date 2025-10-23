@@ -9,9 +9,9 @@ const catalogSchema = new Schema({
         type: String,
         required: [true, 'ImageUrl is required!']
     },
-    catalog: {
+    content: {
         type: String,
-        required: [true, 'catalog is required!']
+        required: [true, 'Content is required!']
     },
     category: {
         type: String,

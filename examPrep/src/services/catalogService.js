@@ -1,6 +1,10 @@
-import catalog from "../models/catalog.js";
+import Catalog from "../models/catalog.js";
 
-export async function create(catalogData, userId) {
+export function getAll() {
+    return Catalog.find();
+}
 
-    return catalog.create({ ...catalogData, owner: userId })
+export function create(catalogData, userId) {
+
+    return Catalog.create({ ...catalogData, owner: userId })
 }
