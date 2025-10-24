@@ -37,17 +37,21 @@ catalogController.get('/:dataId/details', async (req, res) => {
     const data = await catalogService.getOne(dataId);
     const owner = data.owner.id
     const isOwner = userId == owner;
-    const isFollowed = data.followList?.includes(userId)
-    const followList = await catalogService.getAllFollowers(data.followList)
-    const followers = followList.map(follower => follower.username).join(', ')
+    const isDonated = data.donation?.includes(userId)
 
-
-    res.render('catalog/details', { data, isOwner, isFollowed, followers })
+    res.render('catalog/details', { data, isOwner, isDonated })
 })
 
-catalogController.get('/:dataId/follow', isAuth, async (req, res) => {
+catalogController.get('/:dataId/donate', isAuth, async (req, res) => {
     const dataId = req.params.dataId
     const userId = req.user.id
+    const data = await catalogService.getOne(dataId)
+    if (userId == data.owner.id) {
+        throw {
+            statusCode: 403,
+            message: 'Cannot donate to owned animals'
+        }
+    }
     await catalogService.getOneAndUpdate(dataId, userId);
 
     res.redirect(`/catalog/${dataId}/details`)

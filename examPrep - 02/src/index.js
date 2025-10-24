@@ -30,7 +30,7 @@ app.engine('hbs', handlebars.engine({
             this.pageTitle = title;
         },
         getTitle() {
-            return this.pageTitle || 'Mind-Blog'
+            return this.pageTitle || 'Friendly-world'
         }
     }
 

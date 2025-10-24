@@ -15,12 +15,12 @@ export function getOne(dataId) {
 }
 
 export function getOneAndUpdate(dataId, userId) {
-    return Catalog.findByIdAndUpdate(dataId, { $push: { followList: userId } },
+    return Catalog.findByIdAndUpdate(dataId, { $push: { donation: userId } },
         { new: true })
 }
 
-export function getAllFollowers(followList) {
-    return User.find({ _id: { $in: followList } }).select('username');
+export function getAllFollowers(donation) {
+    return User.find({ _id: { $in: donation } });
 }
 
 export function create(catalogData, userId) {
