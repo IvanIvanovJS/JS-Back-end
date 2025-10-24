@@ -31,7 +31,6 @@ export function create(catalogData, userId) {
 export async function deleteyById(dataId, userId) {
     const data = await Catalog.findById(dataId)
 
-
     if (!data.owner.equals(userId)) {
 
         throw {
@@ -49,12 +48,8 @@ export function edit(dataId, data) {
     return Catalog.findByIdAndUpdate(dataId, data, { runValidators: true })
 }
 
-export function getAllByOnwer(ownerId) {
-    return Catalog.find({ owner: ownerId });
-}
-
-export function getUserFollowing(userId) {
-    return Catalog.find({ followList: userId })
+export function getAllByLocation(location) {
+    return Catalog.find({ location: { $regex: new RegExp(`^${location}$`, 'i') } });
 }
 
 

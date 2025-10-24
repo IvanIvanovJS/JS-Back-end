@@ -8,14 +8,17 @@ homeController.get('/', async (req, res) => {
     res.render('home', { catalogData })
 })
 
-homeController.get('/profile', isAuth, async (req, res) => {
-    const created = await catalogService.getAllByOnwer(req.user.id)
-    const totalCreated = created.length
-    const followed = await catalogService.getUserFollowing(req.user.id)
-    const totalFollowed = followed.length
+homeController.get('/search', async (req, res) => {
+    const data = await catalogService.getAll()
 
+    res.render('search', { data })
+})
 
-    res.render('profile', { created, totalCreated, followed, totalFollowed })
+homeController.post('/search', async (req, res) => {
+    const searchParam = req.body.search
+    const data = await catalogService.getAllByLocation(searchParam)
+
+    res.render('search', { data, search: searchParam })
 })
 
 export default homeController
