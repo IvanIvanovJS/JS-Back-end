@@ -1,0 +1,21 @@
+{{setTitle 'Create page'}}
+<section id="create-container">
+    <div class="create-container-info">
+        <h1>Create Blog</h1>
+        <form method="post">
+            <label>Title:</label>
+            <input name="title" type="text" id="title" value="{{catalog.title}}">
+
+            <label>Image:</label>
+            <input name="imageUrl" type="text" id="image" placeholder="http://..." value="{{catalog.imageUrl}}">
+
+            <label>Content:</label>
+            <textarea id="content" name="content">{{catalog.content}}</textarea>
+
+            <label>Blog Category:</label>
+            <input name="category" type="text" id="category" value="{{catalog.category}}">
+
+            <input type="submit" id="btn" value="POST">
+        </form>
+    </div>
+</section>
