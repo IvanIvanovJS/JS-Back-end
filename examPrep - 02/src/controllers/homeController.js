@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { catalogService } from "../services/index.js";
-import { isAuth } from "../middlewares/authMiddleware.js";
 
 const homeController = Router();
 homeController.get('/', async (req, res) => {

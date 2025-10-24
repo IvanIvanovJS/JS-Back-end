@@ -19,9 +19,6 @@ export function getOneAndUpdate(dataId, userId) {
         { new: true })
 }
 
-export function getAllFollowers(donation) {
-    return User.find({ _id: { $in: donation } });
-}
 
 export function create(catalogData, userId) {
 
