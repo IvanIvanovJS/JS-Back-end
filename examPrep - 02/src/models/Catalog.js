@@ -1,29 +1,43 @@
 import { Schema, Types, model } from "mongoose";
 
 const catalogSchema = new Schema({
-    title: {
+    name: {
         type: String,
-        required: [true, 'Title is required!'],
-        minLength: [5, 'The Title should be at least 5 characters long!'],
-        maxLength: [50, `The title shouldn't be longer than 50 characters!`]
+        required: [true, 'Name is required!'],
+        minLength: [5, 'The Name should be at least 5 characters long!'],
+        maxLength: [50, `The Name shouldn't be longer than 50 characters!`]
 
+    },
+    year: {
+        type: Number,
+        required: [true, 'Year is required!']
     },
     imageUrl: {
         type: String,
         required: [true, 'ImageUrl is required!'],
         match: [/^https?:\/\//, `The Image should start with http:// or https://`]
     },
-    content: {
+    kind: {
         type: String,
-        required: [true, 'Content is required!'],
-        minLength: [10, 'The Content should be a minimum of 10 characters long!']
+        required: [true, 'Kind is required!'],
+        minLength: [3, 'The Kind should be a minimum of 10 characters long!']
     },
-    category: {
+    need: {
         type: String,
-        required: [true, 'Category is required!'],
-        minLength: [3, 'The Category should be a minimum of 3 characters long!']
+        required: [true, 'Need is required!'],
+        minLength: [3, 'The need should be a minimum of 3 characters long!']
     },
-    followList: [{
+    location: {
+        type: String,
+        required: [true, 'Location is required!'],
+        minLength: [3, 'The Location should be a minimum of 3 characters long!']
+    },
+    description: {
+        type: String,
+        required: [true, 'Location is required!'],
+        minLength: [3, 'The Location should be a minimum of 3 characters long!']
+    },
+    donation: [{
         type: Types.ObjectId,
         ref: 'User'
     }],
