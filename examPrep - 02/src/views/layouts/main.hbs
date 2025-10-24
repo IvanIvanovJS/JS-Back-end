@@ -17,32 +17,38 @@
         </div>
     </div>
     {{/if}}
-    <div class="navigation">
-        <nav>
-            <img src="/images/logo.jpg">
-            <ul>
-                <!-- Guest users and Logged users -->
-                <li><a href="/">Home</a></li>
-                <li><a href="/catalog">Blogs</a></li>
+    <div id="wrapper">
+        <header>
+            <!-- Navigation -->
+            <nav>
+                <div>
+                    <a href="/">Home</a>
+                    <a href="/catalog">Dashboard</a>
+                    <a href="/search">Search</a>
+                </div>
+
+                <!-- Logged-in users -->
                 {{#if isAuthenticated}}
-                <!--For guest users-->
-                <li><a href="/profile">Profile</a></li>
-                <li><a href="/catalog/create">Create Blog</a></li>
-                <li><a href="/users/logout">Logout</a></li>
+                <div class="user">
+                    <a href="/catalog/create">Add Animal</a>
+                    <a href="/users/logout">Logout</a>
+                </div>
                 {{else}}
-                <li><a href="/users/login">Login</a></li>
-                <li><a href="/users/register">Register</a></li>
-                <!--For loggin users-->
+                <!-- Guest users -->
+                <div class="guest">
+                    <a href="/users/login">Login</a>
+                    <a href="/users/register">Register</a>
+                </div>
                 {{/if}}
-            </ul>
-        </nav>
-    </div>
+            </nav>
+        </header>
 
-    <main>
         {{{body}}}
-    </main>
 
-    <footer>Back-End 2022</footer>
+        <footer>
+            <p>@Friendly World</p>
+        </footer>
+    </div>
 </body>
 
 </html>

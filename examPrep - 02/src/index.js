@@ -10,7 +10,7 @@ import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 const app = express();
 try {
     await mongoose.connect('mongodb://localhost:27017',
-        { dbName: 'mind-blog-2025' }
+        { dbName: 'friendly-world-2025' }
     )
 
     console.log('Successfully connected to DB!');
@@ -46,4 +46,4 @@ app.use(routes)
 
 app.use(errorMiddleware)
 
-app.listen('5000', () => console.log('Server is listening on http://localhost:5000...'))
+app.listen('3000', () => console.log('Server is listening on http://localhost:3000...'))
