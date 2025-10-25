@@ -1,5 +1,5 @@
-import Catalog from "../models/catalog.js";
-import User from "../models/User.js";
+import Catalog from "../models/Catalog.js";
+
 
 
 export function getAll() {
@@ -20,9 +20,9 @@ export function getOneAndUpdate(dataId, userId) {
 }
 
 
-export function create(catalogData, userId) {
+export function create(data, userId) {
 
-    return Catalog.create({ ...catalogData, owner: userId })
+    return Catalog.create({ ...data, owner: userId })
 }
 
 export async function deleteyById(dataId, userId) {
