@@ -41,19 +41,19 @@ catalogController.get('/:dataId/details', async (req, res) => {
     const data = await catalogService.getOne(dataId);
     const owner = data.owner.id
     const isOwner = userId == owner;
-    const isDonated = data.donation?.includes(userId)
+    const isLiked = data.likedList?.includes(userId)
 
-    res.render('catalog/details', { data, isOwner, isDonated })
+    res.render('catalog/details', { data, isOwner, isLiked })
 })
 
-catalogController.get('/:dataId/donate', isAuth, async (req, res) => {
+catalogController.get('/:dataId/likes', isAuth, async (req, res) => {
     const dataId = req.params.dataId
     const userId = req.user.id
     const data = await catalogService.getOne(dataId)
     if (userId == data.owner.id) {
         throw {
             statusCode: 403,
-            message: 'Cannot donate to owned animals'
+            message: 'Cannot likes to owned posts'
         }
     }
     await catalogService.getOneAndUpdate(dataId, userId);

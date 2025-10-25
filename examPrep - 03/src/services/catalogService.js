@@ -15,7 +15,7 @@ export function getOne(dataId) {
 }
 
 export function getOneAndUpdate(dataId, userId) {
-    return Catalog.findByIdAndUpdate(dataId, { $push: { donation: userId } },
+    return Catalog.findByIdAndUpdate(dataId, { $push: { likedList: userId } },
         { new: true })
 }
 

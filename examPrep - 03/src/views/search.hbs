@@ -1,39 +1,31 @@
 {{setTitle 'Search page'}}
 
-<main class="search">
-    <!-- Search Page (Only for logged-in users) -->
-    <section id="search">
-        <h2>Search by Location</h2>
+<div class="search-form-container">
+    <form id="searchForm" class="search-form" method="post">
+        <label for="name">Planet Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter planet name">
 
-        <form class="search-wrapper cf" method="post">
-            <input id="#search-input" type="text" name="search" placeholder="Search here..." value="{{search}}"
-                required />
-            <button type="submit">Search</button>
-        </form>
+        <label for="solarSystem">Solar System:</label>
+        <input type="text" id="solarSystem" name="solarSystem" placeholder="Enter solar system">
 
-        <div id="search-container">
-            <ul class="card-wrapper">
-                {{#each data}}
-                <li class="card">
-                    <img src="{{imageUrl}}" />
-                    <p>
-                        <strong>Name: </strong><span class="name">{{name}}</span>
-                    </p>
-                    <p>
-                        <strong>Location: </strong><span class="location">{{location}}</span>
-                    </p>
-                    <p><strong>Need of:</strong><span class="need-of">{{need}}</span></p>
-                    <a class="details-btn" href="/catalog/{{_id}}/details">Details</a>
-                </li>
-                {{/each}}
+        <button type="submit">Search</button>
+    </form>
+</div>
 
-            </ul>
-
+<div id="searchResults" class="search-results hidden">
+    <h2>Matching Planets:</h2>
+    <!-- Sample result - dynamically generated -->
+    {{#each data}}
+    <div class="planet-result">
+        <img src="{{imageUrl}}" alt="{{name}}" class="planet-img">
+        <div class="planet-info">
+            <p><strong>Name:</strong> {{name}}</p>
+            <p><strong>Solar System:</strong> {{solarSystem}}</p>
+            <a class="detail-btn" href="/catalog/{{_id}}/details">Details</a>
         </div>
-        {{#unless data}}
-        <div id="no-post">
-            <h2>There are no results found.</h2>
-        </div>
-        {{/unless}}
-    </section>
-</main>
+    </div>
+    {{else}}
+    <p class="no-matches">There are no planets found yet!</p>
+    {{/each}}
+
+</div>

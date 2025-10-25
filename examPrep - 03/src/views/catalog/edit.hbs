@@ -1,21 +1,49 @@
 {{setTitle 'Edit page'}}
-<main class="edit">
-    <!-- Edit Page (Only for logged-in users) -->
-    <section id="create">
-        <div class="form">
-            <h2>Edit item</h2>
-            <form class="create-form" method="post">
-                <input type="text" name="name" id="name" placeholder="Name" value="{{data.name}}" />
-                <input type="text" name="year" id="years" placeholder="Years" value="{{data.year}}" />
-                <input type="text" name="kind" id="kind" placeholder="Kind" value="{{data.kind}}" />
-                <input type="text" name="imageUrl" id="animal-img" placeholder="Image url" value="{{data.imageUrl}}" />
-                <input type="text" name="need" id="needs-of" placeholder="Needs of" value="{{data.need}}" />
-                <input type="text" name="location" id="location" placeholder="Location" value="{{data.location}}" />
-                <textarea id="description" placeholder="Description..."
-                    name="description">{{data.description}}</textarea>
+<form class="edit-form" method="post">
+    <label for="name">Name of Planet:</label>
+    <input type="text" id="name" name="name" value="{{data.name}}">
 
-                <button type="submit">Edit</button>
-            </form>
-        </div>
-    </section>
-</main>
+    <label for="age">Age (in billion years):</label>
+    <input type="number" id="age" name="age" value="{{data.age}}">
+
+    <label for="solarSystem">Solar System:</label>
+    <input type="text" id="solarSystem" name="solarSystem" value="{{data.solarSystem}}">
+
+    <label for="type">Type:</label>
+    <select id="type" name="type">
+        <option value="---" selected>---</option>
+        {{#each typeOptions}}
+        <option value="{{value}}" {{selected}}>{{title}}</option>
+        {{else}}
+        <option value="Inner">Inner</option>
+        <option value="Outer">Outer</option>
+        <option value="Dwarf">Dwarf</option>
+        {{/each}}
+    </select>
+
+    <label for="moons">Moons (count):</label>
+    <input type="number" id="moons" name="moons" value="{{data.moons}}">
+
+    <label for="size">Size (in km):</label>
+    <input type="number" id="size" name="size" value="{{data.size}}">
+
+    <label for="rings">Rings:</label>
+    <select id="rings" name="rings">
+        <option value="---" selected>---</option>
+        {{#each ringsOptions}}
+        <option value="{{value}}" {{selected}}>{{title}}</option>
+        {{else}}
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        {{/each}}
+    </select>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" rows="4">{{data.description}}</textarea>
+
+    <label for="image">Image URL:</label>
+    <input type="url" id="image" name="imageUrl" value="{{data.imageUrl}}">
+
+
+    <button type="submit">Save Changes</button>
+</form>
