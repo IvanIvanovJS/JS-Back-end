@@ -10,7 +10,7 @@ import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 const app = express();
 try {
     await mongoose.connect('mongodb://localhost:27017',
-        { dbName: 'friendly-world-2025' }
+        { dbName: 'cosmic-explorer-2025' }
     )
 
     console.log('Successfully connected to DB!');
@@ -30,7 +30,7 @@ app.engine('hbs', handlebars.engine({
             this.pageTitle = title;
         },
         getTitle() {
-            return this.pageTitle || 'Friendly-world'
+            return this.pageTitle || 'Cosmic Explorer'
         }
     }
 

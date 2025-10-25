@@ -3,52 +3,47 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/styles.css" />
     <title>{{getTitle}}</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 
 <body>
-    {{#if error}}
-    <div>
-        <div class="errorContainer">
-            <p>{{error}}</p>
-        </div>
-    </div>
-    {{/if}}
-    <div id="wrapper">
-        <header>
-            <!-- Navigation -->
-            <nav>
-                <div>
-                    <a href="/">Home</a>
-                    <a href="/catalog">Dashboard</a>
-                    <a href="/search">Search</a>
-                </div>
 
-                <!-- Logged-in users -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/catalog">Catalog</a></li>
+                <li><a href="/search">Search</a></li>
+
                 {{#if isAuthenticated}}
-                <div class="user">
-                    <a href="/catalog/create">Add Animal</a>
-                    <a href="/users/logout">Logout</a>
-                </div>
+                <li><a href="/catalog/create">Create</a></li>
+                <li><a href="/users/logout">Logout</a></li>
                 {{else}}
-                <!-- Guest users -->
-                <div class="guest">
-                    <a href="/users/login">Login</a>
-                    <a href="/users/register">Register</a>
-                </div>
+                <li><a href="/users/login">Login</a></li>
+                <li><a href="/users/register">Register</a></li>
                 {{/if}}
-            </nav>
-        </header>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {{#if error}}
+        <div>
+            <div class="error-containers">
+                <p>{{error}}</p>
+            </div>
+        </div>
+        {{/if}}
 
         {{{body}}}
 
-        <footer>
-            <p>@Friendly World</p>
-        </footer>
-    </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Cosmic Explorer. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
