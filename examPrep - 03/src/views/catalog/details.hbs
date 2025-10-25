@@ -1,50 +1,29 @@
 {{setTitle 'Details page'}}
-<main class="details">
-    <!-- Details page -->
-    <section id="details">
-        <div id="details-wrapper">
-            <p id="details-title">Name: {{data.name}}</p>
-            <div id="img-wrapper">
-                <img src="{{data.imageUrl}}" />
-            </div>
-            <div id="info-wrapper">
-                <table>
-                    <tr>
-                        <td>
-                            <p>
-                                Years: <span id="details-years">{{data.year}}</span>
-                            </p>
-                        </td>
-                        <td>
-                            <p>Kind: <span id="details-kind">{{data.kind}}</span></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>Need of: <span id="details-need">{{data.need}}</span></p>
-                        </td>
-                        <td>
-                            <p>Location: <span id="details-location">{{data.location}}</span></p>
-                        </td>
-                    </tr>
-                </table>
-                <p>Description: <span id="details-description">{{data.description}}</span></p>
-            </div>
-            {{#if isAuthenticated}}
-            <!--Edit and Delete are only for creator-->
-            <div id="action-buttons">
-                {{#if isOwner}}
-                <a href="/catalog/{{data._id}}/edit" id="edit-btn">Edit</a>
-                <a href="/catalog/{{data._id}}/delete" id="delete-btn">Delete</a>
-                {{else}}
-                {{#if isDonated}}
-                <p id="already-donated">You already donated!</p>
-                {{else}}
-                <a href="/catalog/{{data._id}}/donate" id="donation-btn">Donation</a>
-                {{/if}}
-                {{/if}}
-            </div>
-            {{/if}}
-        </div>
-    </section>
-</main>
+
+<div class="planet-details">
+    <img src="{{data.imageUrl}}" class="planet-image">
+    <div class="planet-info">
+        <h2>Name: {{data.name}}</h2>
+        <p><strong>Age:</strong> {{data.age}} billion years</p>
+        <p><strong>Solar System:</strong> {{data.solarSystem}}</p>
+        <p><strong>Type:</strong> {{data.type}}</p>
+        <p><strong>Moons:</strong> {{data.moons}}</p>
+        <p><strong>Size:</strong> {{data.size}} km</p>
+        <p><strong>Rings:</strong> {{data.rings}}</p>
+        <p><strong>Description:</strong> {{data.description}}</p>
+    </div>
+    {{#if isAuthenticated}}
+    <div class="actions">
+        {{#if isOwner}}
+        <a class="edit-btn" href="/catalog/{{data._id}}/edit">Edit</a>
+        <a class="delete-btn" href="/catalog/{{data._id}}/delete">Delete</a>
+        {{else}}
+        {{#if isLiked}}
+        <p id="liked-message" class="liked-message hidden">You've already liked this planet.</p>
+        {{else}}
+        <a id="like-button" class="like-btn" href="/catalog/{{data._id}}/likes">Like</a>
+        {{/if}}
+        {{/if}}
+    </div>
+    {{/if}}
+</div>
