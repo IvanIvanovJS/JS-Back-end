@@ -45,8 +45,16 @@ export function edit(dataId, data) {
     return Catalog.findByIdAndUpdate(dataId, data, { runValidators: true })
 }
 
-export function getAllByLocation(location) {
-    return Catalog.find({ location: { $regex: new RegExp(`^${location}$`, 'i') } });
+export function getAllBySearchParams(name, solarSystem) {
+    return Catalog.find({
+        name: {
+            $regex: new RegExp(`^${name}$`, 'i')
+        },
+        solarSystem: {
+            $regex: new RegExp(`^${solarSystem}$`, 'i')
+        },
+    }
+    );
 }
 
 

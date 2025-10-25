@@ -14,10 +14,11 @@ homeController.get('/search', async (req, res) => {
 })
 
 homeController.post('/search', async (req, res) => {
-    const searchParam = req.body.search
-    const data = await catalogService.getAllByLocation(searchParam)
+    const { name, solarSystem } = req.body
+    const data = await catalogService.getAllBySearchParams(name, solarSystem)
 
-    res.render('search', { data, search: searchParam })
+
+    res.render('search', { data, name, solarSystem })
 })
 
 export default homeController
