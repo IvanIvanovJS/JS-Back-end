@@ -7,7 +7,11 @@ export function getAll() {
 }
 
 export function getLatest() {
-    return Myth.find().sort({ _id: -1 }).limit(3)
+    return Myth.find()
+        .sort({ createdAt: -1 })
+        .limit(3)
+        .populate('owner', 'email')
+        .select('name origin role symbol era imageUrl owner createdAt')
 }
 
 export function getOne(dataId) {

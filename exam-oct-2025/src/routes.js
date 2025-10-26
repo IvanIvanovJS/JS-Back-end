@@ -3,12 +3,14 @@ import errorController from "./controllers/errorController.js";
 import homeController from "./controllers/homeController.js";
 import userController from "./controllers/userController.js";
 import catalogController from "./controllers/catalogController.js";
+import apiController from "./controllers/apiController.js";
 
 const routes = Router();
 
 routes.use(homeController)
 routes.use('/users', userController)
 routes.use('/catalog', catalogController)
+routes.use('/api', apiController)
 
 routes.use(errorController)
 

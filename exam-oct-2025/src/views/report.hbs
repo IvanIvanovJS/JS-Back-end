@@ -1,0 +1,29 @@
+<main class="report-section">
+    <section id="report-section">
+        <h2>Report</h2>
+        <ul class="report-list">
+            {{#if data}}
+            <ul id="report-list">
+                {{#each data}}
+                <li class="report-card">
+                    <img src="{{this.imageUrl}}" />
+                    <h3>{{this.name}}</h3>
+                    <p><strong>Origin:</strong> <br> {{this.origin}}</p>
+                    <p><strong>Role:</strong> <br> {{this.role}}</p>
+                    <p><strong>Symbol:</strong> <br>{{this.symbol}}</p>
+                    <p><strong>Era:</strong> <br> {{this.era}}</p>
+                    <p><strong>Created on:</strong> <br>{{formatDate this.createdAt}}</p>
+                    <p><strong>Owner:</strong> <br> {{this.owner.email}}</p>
+                </li>
+                {{/each}}
+            </ul>
+            {{else}}
+            {{#if error}}
+            <h2 id="no-post">Error loading report!</h2>
+            {{else}}
+            <h2 id="no-post">There are no myths and legends!</h2>
+            {{/if}}
+            {{/if}}
+        </ul>
+    </section>
+</main>

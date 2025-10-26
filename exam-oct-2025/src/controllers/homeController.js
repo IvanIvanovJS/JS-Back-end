@@ -8,13 +8,12 @@ homeController.get('/', async (req, res) => {
 })
 
 homeController.get('/report', async (req, res) => {
-    const data = await catalogService.getAll()
-
-    res.render('report', { data })
-})
-
-homeController.post('/report', async (req, res) => {
-
+    try {
+        const data = await catalogService.getLatest();
+        res.render('report', { data });
+    } catch (err) {
+        res.render('report', { error: 'Error loading report!' });
+    }
 })
 
 export default homeController
