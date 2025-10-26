@@ -1,17 +1,5 @@
-.create,
-.register,
-.login,
-.edit,
-.dashboard,
-.details,
-.search,
-.errorPage,
-.home {
-  min-height: 90vh;
-  width: 100%;
-}
 
-#dashboard {
+#report-section {
   margin-top: -50px;
   display: block;
 }
@@ -22,22 +10,22 @@ h2 {
   color: white;
 }
 
-.card img {
-  margin: auto;
-  height: auto;
-  width: 13vw;
+.report-card img {
+  height: 22vh;
   object-fit: cover;
   border: 2px solid black;
   border-radius: 10px;
 }
 
-.card-wrapper {
+.report-list {
   list-style-type: none;
   display: flex;
-  flex-wrap: wrap;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
-.dashboard h2 {
+.report-section h2 {
  color: wheat;
  margin-top: 40px;
  margin-bottom: -20px;
@@ -49,18 +37,24 @@ h2 {
   font-size: 21px;
 }
 
-.card {
+.report-card {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  max-width: 23%;
-  height: 65vh;
+align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  width: 90vw;
+  height: 25vh;
   margin: 25px auto;
   color: black;
   background-color: white;
   border-radius: 5px;
   border: 2px solid rgba(169, 152, 198, 0.781);
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.682), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.report-card h3{
+  font-size: 40px;
 }
 
 .details-btn {
